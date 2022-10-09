@@ -1,0 +1,70 @@
+<!--* Se usa el enfoque de formulario Template Driven Forms -->
+<!--TODO Como 'checkout' tiene un módulo independiente se tiene que importar material.module en dicho módulo -->
+<div class="container">  
+    <form class="form item" #checkoutForm="ngForm">
+        <mat-form-field class="form__element"> <!-- Input Nombre -->
+    <!--! Se emplea el mecanismo Two-Way-Binding en 'model.name' -->
+    <!--! Este mecanismo realiza comunicaciones/sincronizaciones (bidings) bidireccionales, del template al Modelo y viceversa, al mismo tiempo -->
+            <input matInput placeholder="Nombre" required [(ngModel)] = "model.name" name="Name" #name="ngModel"> 
+
+            <mat-error *ngIf="!name.valid || name.pristine"> <!-- Validación, si el nombre no es valido o si el campo aun no a sido modificado (pristine) -->
+                El nombre es requerido
+            </mat-error>
+
+        </mat-form-field>
+
+        <mat-radio-group class="form__element"> <!-- Radio Buttons -->
+
+            <p>Escoge una opción:</p>
+
+            <mat-radio-button value="pickup" (change)="onPickupOrDelivery(false)"> Pickup </mat-radio-button>
+
+            <mat-radio-button value="delivery" (change)="onPickupOrDelivery(true)" checked> Delivery </mat-radio-button>
+
+        </mat-radio-group>
+
+        <!--! ngIf verifica si 'isDelivery' es true, muestra los input de dirección y de ciudad y oculta la lista de tiendas('stores') 
+        <!--! Si no lo es, oculta los input y muestra la lista de tiendas('stores') -->
+        <ng-container *ngIf="isDelivery; else showStores"> <!-- Inputs que se muestran si isDelivery = true -->       
+
+            <mat-form-field class="form__element"> <!-- Input Dirección de envío -->
+                <input matInput placeholder="Dirección de envío" [(ngModel)] = model.shippingAddress name="shippingAddress" #shippingAddress="ngModel">
+            </mat-form-field>
+
+            <mat-form-field class="form__element"> <!-- Input Ciudad -->
+                <input matInput placeholder="Ciudad" [(ngModel)] = model.city name="city" #city="ngModel">
+            </mat-form-field>
+
+        </ng-container>
+
+        <!--! Directiva ng-template: El contenido de esta etiqueta contendrá una parte de una template que luego se puede reutilizar -
+        <!--! y añadirse a otras templates para formar la template de un componente (en este caso 'ng-container') -->        
+        <ng-template #showStores> <!-- Lista de 'stores' que se muestra si isDelivery = false -->
+            <!--* Se muestra el listado de tiendas -->     
+            <mat-form-field class="form__element">
+
+            <mat-label> Seleccióname </mat-label>
+
+            <mat-select name="store" #store="ngModel" [(ngModel)] = model.store>          
+            <!--! Se utiliza la directiva ngForm(estructural) para iterar 'stores' -->
+                <mat-option [value]="tienda" *ngFor="let tienda of stores">
+                    {{ tienda.name }} - {{ tienda.openingHours }}
+                </mat-option> 
+            </mat-select>
+
+            </mat-form-field>
+        </ng-template>
+
+    </form>
+</div>
+
+<!--* Se muestra el componente que muestra los detalles de la compra ('details')  -->
+<app-details></app-details>
+
+<div class="container__button"> <!-- Button Checkout -->
+    <!--* [disables]="": El botón estará deshabilitado mientras el formulario no sea válido -->    
+    <button [disabled]="!checkoutForm.form.valid" mat-raised-button color="primary" type="submit" (click)="onSubmit(checkoutForm)"> 
+        <!--! Se pasa la referencia del form('#checkoutForm') como argumento en el método llamado en el evento (click) -->
+        Checkout 
+    </button>
+</div>

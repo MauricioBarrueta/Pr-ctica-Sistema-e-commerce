@@ -1,0 +1,33 @@
+<!--! Componente de checkout que muestra los detalles de la compra -->
+
+<div class="container_table">
+    <table class="table">
+        <thead> <!-- Columnas de la tabla -->
+            <tr>
+                <th> Item </th>
+                <th> Cantidad </th>
+                <th> Precio por unidad </th>
+                <th> Subtotal </th>              
+            </tr>
+        </thead>
+
+        <tbody> <!-- Filas de la tabla -->
+        <!--* Se usa la directiva '*ngFor' para mostrar los datos y el pipe 'async' para "resolver" el Observable -->    
+            <tr *ngFor="let item of cart$ | async">     
+                <td>{{ item.name }}</td>
+                <td>{{ item.cant }}</td>
+                <td>{{ item.price | currency }}</td> <!-- 'currency' = divisas -->
+                <td>{{ item.cant * item.price | currency }}</td>               
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="container_total"> <!-- Se muestra el total de la compra -->        
+        <p class="total">
+            <strong>Total: 
+                <span>{{ total$ | async | currency }}</span>
+            </strong>
+        </p>
+    </div>
+
+</div>

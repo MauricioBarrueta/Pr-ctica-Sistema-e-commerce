@@ -1,0 +1,19 @@
+<!--! Comunicación entre un componente padre(products) a un componente hijo(product) usando el decorador @Input -->
+<mat-card class="card">
+    <mat-card-header> <!--* Se muestra el nombre del producto -->
+        <mat-card-title>{{ product.name }}</mat-card-title>
+    </mat-card-header> 
+
+    <mat-card-content> <!--* Se muestra la descripción del producto -->
+        {{ product.description }}
+    </mat-card-content>
+
+    <mat-card-actions> <!--* Se muestra el Botón de 'Comprar' -->
+    <!--! Comunicación entre el componente hijo(product) con el componente padre(products) usando el decorador @Output -->
+        <!--* El botón no se habilita si la cantidad de productos es = 0 -->
+        <button mat-flat-button color="primary" (click)="onClick()" [disabled]="product.stock == 0">            
+            Buy {{product.price | currency}} <!-- * Currency: Muestra números acompañados de una divisa (euros, dólares, yenes, etc) -->
+            <mat-icon>add_shopping_cart</mat-icon> <!-- * mat-icon insesrta un icono -->
+        </button>
+    </mat-card-actions>
+</mat-card>
