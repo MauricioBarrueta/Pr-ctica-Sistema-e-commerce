@@ -1,7 +1,11 @@
-# AngularDesdeCero
+🇲🇽 Esta práctica que simula un sistema 'e-commerce' en el cual es posible hacer la compra de uno o varios productos por medio de     un carrito de compras, además de escoger la forma de entrega, si se recoge en paquetería o se entrega al domicilio.
+
+🇺🇸 This practice simulates an 'e-commerce' system in which it's possible to make the purchase of one or several products through     a shopping cart, also allows you to choose the delivery method, either pick-up at the parcel service or delivery at the           customer's home.
+
+![Ecomm](https://github.com/MauricioBarrueta/Sistema-E-Commerce/assets/60496232/ded048da-2521-485a-9538-0de33ff5e504)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.1.
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
