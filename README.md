@@ -1,6 +1,6 @@
-🇲🇽 Esta práctica que simula un sistema 'e-commerce' en el cual es posible hacer la compra de uno o varios productos por medio de     un carrito de compras, además de escoger la forma de entrega, si se recoge en paquetería o se entrega al domicilio.
+🇲🇽 Práctica de un sistema e-commerce el cual simula la compra de uno o varios productos por medio de un carrito de compras, además de escoger si se recoge en paquetería o se entrega al domicilio especificado.
 
-🇺🇸 This practice simulates an 'e-commerce' system in which it's possible to make the purchase of one or several products through     a shopping cart, also allows you to choose the delivery method, either pick-up at the parcel service or delivery at the           customer's home.
+🇺🇸 Practice of an e-commerce system which simulates the purchase of one or more products by means of a shopping cart, in addition to choosing whether it is collected by parcel or delivered to the specified address.
 
 ![Ecomm](https://github.com/MauricioBarrueta/Sistema-E-Commerce/assets/60496232/ded048da-2521-485a-9538-0de33ff5e504)
 
